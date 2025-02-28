@@ -4,6 +4,38 @@
     <%- include('./partials/login_head.ejs') %>
 </head>
 <body>
-    hello
+    <section class="container">
+        <div>
+            <h1>Movie Critics</h1>
+        </div>
+
+        <!-- For each user -->
+        <div class="profiles-container">
+
+            <%- include('./partials/profile_block.ejs') %>
+            <%- include('./partials/profile_block.ejs') %>
+
+            <div class="profile-block">
+                <div class="div-img-temp"></div>
+                <h2>All</h2>
+            </div>
+
+            <div class="profile-block">
+                <div class="div-img-temp"></div>
+                <h2>Add Profile</h2>
+            </div>
+
+        </div>
+
+        <div class="edit-profiles">
+            <h3>Edit Profiles</h3>
+        </div>
+        
+        <!-- Create new Profile -->
+        <div class="create-profile">
+            <!-- popup for creation of profile -->
+        </div>
+        
+    </section>
 </body>
 </html>

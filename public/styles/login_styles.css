@@ -1,0 +1,22 @@
+.container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.profiles-container{
+    display: flex;
+    gap: 50px;
+}
+
+.profile-block{
+    text-align: center;
+}
+.div-img-temp{
+    width: 150px;
+    height: 150px;
+    background-color: white;
+}
