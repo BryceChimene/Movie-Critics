@@ -1,6 +1,13 @@
+:root{
+    --bg-color: linear-gradient(rgb(7, 7, 7), rgb(21, 21, 21), rgb(21, 21, 21), rgb(21, 21, 21), rgb(21, 21, 21), rgb(21, 21, 21), rgb(7, 7, 7));
+}
+
 html, body{
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color: rgb(21, 21, 21);
+    background-image: var(--bg-color);
     color: white;
+    font-family: sans-serif;
+    height: 100%;
 }
