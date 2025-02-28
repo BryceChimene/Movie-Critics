@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Get Homescreen
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('login/index');
 })
 
 app.listen(port, () => {
