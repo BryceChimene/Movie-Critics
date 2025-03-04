@@ -12,17 +12,22 @@
         <!-- For each user -->
         <div class="profiles-container">
 
-            <%- include('./partials/profile_block.ejs') %>
-            <%- include('./partials/profile_block.ejs') %>
-
+            <% users.forEach(user => { %>
+                <div class="profile-block">
+                    <div class="div-img"></div>
+                    <h2><%= user.name %></h2>
+                </div>
+            <% }) %>
+            
             <div class="profile-block">
                 <div class="div-img"></div>
                 <h2>All</h2>
             </div>
 
-            <div class="profile-block">
-                <div class="div-img">
-                    <p class="add-sign">+</p>
+            <!-- Add Profile -->
+            <div class="profile-block" onclick="showPopup()">
+                <div class="add-img">
+                    <div class="add-sign">+</div>
                 </div>
                 <h2>Add Profile</h2>
             </div>
@@ -32,12 +37,27 @@
         <div class="manage-profiles">
             <h3>Manage Profiles</h3>
         </div>
-        
-        <!-- Create new Profile -->
-        <div class="create-profile">
-            <!-- popup for creation of profile -->
+    </section>
+
+    <!-- Popup Form for Creating Profile -->
+    <section class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+
+            <div class="close-container"><div class= "close" onclick="closePopup()"></div></div>
+            <h4>Add a profile</h4>
+            <p>Add a profile for another person to critic films</p>
+
+            <div class="profile-input">
+                <div class="new-img"></div>
+                <input type="text" id="profileName" placeholder="Name">
+            </div>
+
+            <div class="button-container">
+                <button>Save</button>
+                <button onclick="closePopup()">Cancel</button>
+            </div>
+
         </div>
-        
     </section>
 </body>
 </html>
