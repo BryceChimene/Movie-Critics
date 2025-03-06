@@ -108,13 +108,14 @@ h3{
 /* Add Profile Popup */
 .popup-overlay{
     position: fixed;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgb(8, 8, 8);
 }
 .popup{
     text-align: center;
@@ -122,16 +123,30 @@ h3{
     padding: 10px 40px 10px 40px;
     border-radius: 5px;
     height: fit-content;
-    background-color: black;
+    background-color: rgb(21, 21, 21);;
+    border: 1px solid rgba(191, 191, 191, 0.251);
 }
 
+        /* Popup Text */
+.popup-text{
+    margin: 50px 0 50px 0;
+}
+.popup-text h4{
+    margin: 0 0 8px 0;
+    font-size: 2rem;
+}
+.popup-text p{
+    margin: 0;
+}
+
+        /* Popup Input with base image */
 .profile-input{
     display: flex;
     align-items: center;
 }
 .new-img{
-    height: 80px;
-    width: 90px;
+    height: 90px;
+    width: 110px;
     border-radius: 5px;
     background-color: pink;
     margin-right: 20px;
@@ -141,20 +156,72 @@ input{
     width: 100%;
     border-radius: 5px;
     padding-left: 10px;
+    font-size: 1rem;
+    color: white;
     background-color: transparent;
     box-shadow: none;
-    border: 1px solid white;
- }
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    caret-color: white;
+}
+input:focus{
+    outline: 2.5px solid white;
+    outline-offset: 2px;
+}
+.profile-input > div:last-child{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#input-warning{
+    display: none;
+    text-align: left;
+    margin-left: 5px;
+    color: orange;
+    font-size: .8rem;
+}
 
+.popup hr{
+    margin: 60px 0 60px 0;
+    opacity: .5;
+}
+
+
+        /* Buttons */
 .button-container{
     display: flex;
     flex-direction: column;
 }
+.button-container > button{
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .2s;
+}
+.button-container .save{
+    background-color: white;
+    margin-bottom: 10px;
+}
+.button-container .cancel{
+    background-color: transparent;
+    color: white;
+    margin-bottom: 30px;
+}
+.button-container .save:hover{
+    opacity: .7;
+}
+.button-container .cancel:hover{
+    background-color: rgba(255, 255, 255, 0.255);
+}
 
-
+        /* Popup x icon */
 .close-container{
     width: fit-content;
     padding: 5px;
+    margin-top: 5px;
     margin-right: -20px;
     border-radius: 50%;
     transition: all .2s;
@@ -162,6 +229,7 @@ input{
 }
 .close-container:hover{
     background-color: grey;
+    cursor: pointer;
 }
 .close {
     position: relative;
@@ -177,14 +245,12 @@ input{
     position: absolute;
     content: '';
     width: 100%;
-    height: 3px; /* cross thickness */
+    height: 2px; /* cross thickness */
     background-color: white;
 }
-
 .close::before {
     transform: rotate(45deg);
 }
-
 .close::after {
     transform: rotate(-45deg);
 }

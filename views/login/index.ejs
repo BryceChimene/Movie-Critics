@@ -44,17 +44,26 @@
         <div class="popup">
 
             <div class="close-container"><div class= "close" onclick="closePopup()"></div></div>
-            <h4>Add a profile</h4>
-            <p>Add a profile for another person to critic films</p>
+
+            <div class="popup-text">
+                <h4>Add a profile</h4>
+                <p>Add a profile for another person to critic films</p>  
+            </div>
+            
 
             <div class="profile-input">
                 <div class="new-img"></div>
-                <input type="text" id="profileName" placeholder="Name">
+                <div>
+                    <input type="text" id="profileName" placeholder="Name">
+                    <p id="input-warning"></p>
+                </div>
             </div>
 
+            <hr>
+
             <div class="button-container">
-                <button>Save</button>
-                <button onclick="closePopup()">Cancel</button>
+                <button class="save" onclick="saveProfile()">Save</button>
+                <button class="cancel" onclick="resetWarning()">Cancel</button>
             </div>
 
         </div>

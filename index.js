@@ -27,7 +27,7 @@ const db = new pg.Client({
 db.connect();
 
 // Return users' name
-async function getUsers(){
+async function getAllUserNames(){
     try{
         const res = await db.query("SELECT name FROM users");
         return res.rows;
@@ -39,7 +39,7 @@ async function getUsers(){
 
 // Get Homescreen
 app.get('/', async (req, res) => {
-    const users = await getUsers();
+    const users = await getAllUserNames();
     console.log("Users: ", users);
     
     res.render('login/index', {users: users});
