@@ -45,6 +45,12 @@ app.get('/', async (req, res) => {
     res.render('login/index', {users: users});
 });
 
+// Create new Profile
+app.post('/add-profile', (req, res) => {
+    
+});
+
+
 app.listen(serverPort, () => {
     console.log(`Server running on port ${serverPort}.`);
 });
