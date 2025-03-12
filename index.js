@@ -46,9 +46,32 @@ app.get('/', async (req, res) => {
 });
 
 // Create new Profile
-app.post('/add-profile', (req, res) => {
+app.post('/add-profile', async (req, res) => {
+    const { name } = req.body;
+
+    if (!name) {
+        return res.json({ success: false, message: "Profile name cannot be empty." });
+    }
     
+
+    try {
+        // Check if the name already exists
+        const existingUser = await db.query("SELECT name FROM users WHERE LOWER(name) = LOWER($1)", [name]);
+
+        if (existingUser.rows.length > 0) {
+            return res.json({ success: false, message: "Profile name already exists." });
+        }
+
+        // Insert new profile into the database
+        await db.query("INSERT INTO users (name) VALUES ($1)", [name]);
+
+        res.json({ success: true });
+    } catch (err) {
+        console.error("ERROR inserting profile:", err.stack);
+        res.json({ success: false, message: "An error occurred while adding the profile." });
+    }
 });
+
 
 
 app.listen(serverPort, () => {

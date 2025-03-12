@@ -7,15 +7,9 @@ function closePopup(){
     document.getElementById('popupOverlay').style.display = 'none';
 }
 
+// Validate New Profile Name
 function saveProfile(){
     const profileName = document.getElementById('profileName').value.trim();
-
-    validateProfile(profileName);
-    postProfileName(profileName);
-}
-
-// Validate New Profile Name
-function validateProfile(profileName){
     const existingProfiles = Array.from(document.querySelectorAll('.profiles-container h2'))
                                   .map(h2 => h2.textContent.toLowerCase());
     const inputWarning = document.getElementById('input-warning');
@@ -26,25 +20,15 @@ function validateProfile(profileName){
         inputWarning.textContent = '⚠️ Please enter a name';
         return;
     }
-
+ 
     if (existingProfiles.includes(profileName.toLowerCase())) {
         document.getElementById('profileName').style.border = '1px solid orange';
         inputWarning.style.display = 'block';
         inputWarning.textContent = '⚠️ This name is already in use. Select another name.';
         return;
     }
-}
-
-// Reset warning back to starting state
-function resetWarning(){
-    const inputWarning = document.getElementById('input-warning');
-    inputWarning.style.display = 'none';
-    document.getElementById('profileName').style.border = '1px solid rgba(255, 255, 255, 0.5)';
-}
-
-// Send profile name to the backend
-function postProfileName(profileName){
-    fectch('/add-profile', {
+z
+    fetch('/add-profile', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,4 +41,11 @@ function postProfileName(profileName){
             }
         })
         .catch(error => console.error('Error: error'));
+}
+
+// Reset warning back to starting state
+function resetWarning(){
+    const inputWarning = document.getElementById('input-warning');
+    inputWarning.style.display = 'none';
+    document.getElementById('profileName').style.border = '1px solid rgba(255, 255, 255, 0.5)';
 }
