@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/login_head.ejs') %>
+    <script src="scripts/edit_profile.js"></script>
+</head>
+<body>
+    <section class="container">
+        <div>
+            <h1>Manage Profiles:</h1>
+        </div>
+
+        <!-- For each user -->
+        <div class="profiles-container">
+
+            <% users.forEach(user => { %>
+                <div class="profile-block dim" onclick="editPopup('<%= user.name %>')">
+                    <div class="div-img">
+                        <div class="edit-img">✎</div>
+                    </div>
+                    <h2><%= user.name %></h2>
+                </div>
+            <% }) %>
+
+            <!-- Add Profile -->
+            <div class="profile-block" onclick="showPopup()">
+                <div class="add-img">
+                    <div class="add-sign">+</div>
+                </div>
+                <h2>Add Profile</h2>
+            </div>
+
+        </div>
+
+        <div class="manage-profiles-done">
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <h3>Done</h3>
+            </a>
+        </div>
+    </section>
+
+    <!-- Popup Form for Managing Profile -->
+    <section class="edit-popup" id="editPopup">
+        <div class="popup">
+
+            <div class="close-container">
+                <div class= "close" onclick="closeEditPopup()"></div>
+            </div>
+
+            <div class="popup-text">
+                <h4>Manage Profile</h4>
+                <p>Manage a profile for Critic Films.</p>  
+            </div>
+            
+
+            <div class="profile-input">
+                <div class="new-img"></div>
+                <div>
+                    <input type="text" id="manageProfileName">
+                    <p id="manage-input-warning"></p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="button-container">
+                <button class="save" onclick="editProfile()">Save</button>
+                <button class="cancel" onclick="closeEditPopup()">Cancel</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Popup Form for Creating Profile -->
+    <%- include('./partials/create_profile_popup.ejs')  %>
+</body>
+</html>

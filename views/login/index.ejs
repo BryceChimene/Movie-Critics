@@ -18,11 +18,6 @@
                     <h2><%= user.name %></h2>
                 </div>
             <% }) %>
-            
-            <div class="profile-block">
-                <div class="div-img"></div>
-                <h2>All</h2>
-            </div>
 
             <!-- Add Profile -->
             <div class="profile-block" onclick="showPopup()">
@@ -35,38 +30,13 @@
         </div>
 
         <div class="manage-profiles">
-            <h3>Manage Profiles</h3>
+            <a href="/manage-profiles" style="text-decoration: none; color: inherit;">
+                <h3>Manage Profiles</h3>
+            </a>
         </div>
     </section>
 
     <!-- Popup Form for Creating Profile -->
-    <section class="popup-overlay" id="popupOverlay">
-        <div class="popup">
-
-            <div class="close-container"><div class= "close" onclick="closePopup()"></div></div>
-
-            <div class="popup-text">
-                <h4>Add a profile</h4>
-                <p>Add a profile for another person to critic films</p>  
-            </div>
-            
-
-            <div class="profile-input">
-                <div class="new-img"></div>
-                <div>
-                    <input type="text" id="profileName" placeholder="Name">
-                    <p id="input-warning"></p>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="button-container">
-                <button class="save" onclick="saveProfile()">Save</button>
-                <button class="cancel" onclick="closePopup()">Cancel</button>
-            </div>
-
-        </div>
-    </section>
+    <%- include('./partials/create_profile_popup.ejs')  %>
 </body>
 </html>

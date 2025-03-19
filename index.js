@@ -45,6 +45,46 @@ app.get('/', async (req, res) => {
     res.render('login/index', {users: users});
 });
 
+// Manage Profiles
+app.get('/manage-profiles', async (req, res) => {
+    const users = await getAllUserNames();
+
+    res.render('login/manage_users', {users: users});
+});
+
+// Update Profile
+app.post('/update-profile', async (req, res) => {
+    const { originalName, newProfileName } = req.body;
+
+    if (!newProfileName) {
+        return res.json({ success: false, message: "Profile name cannot be empty." });
+    }
+
+    try {
+        // Check if the new profile name already exists
+        const existingUser = await db.query(
+            "SELECT name FROM users WHERE LOWER(name) = LOWER($1)",
+            [newProfileName]
+        );
+
+        if (existingUser.rows.length > 0) {
+            return res.json({ success: false, message: "Profile name already exists." });
+        }
+
+        // Update profile name in the database
+        await db.query(
+            "UPDATE users SET name = $1 WHERE LOWER(name) = LOWER($2)",
+            [newProfileName, originalName]
+        );
+
+        res.json({ success: true });
+    } catch (err) {
+        console.error("ERROR updating profile:", err.stack);
+        res.json({ success: false, message: "An error occurred while updating the profile." });
+    }
+});
+
+
 // Create new Profile
 app.post('/add-profile', async (req, res) => {
     const { name } = req.body;
