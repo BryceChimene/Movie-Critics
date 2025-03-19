@@ -30,15 +30,23 @@ h2{
     cursor: pointer;
 }
 .div-img{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     align-items: center;
     width: 200px;
     height: 200px;
-    background-color: rgb(151, 109, 109);
+    background-color: black;
     border-radius: 5px;
     border: 1px solid transparent;
     font-size: 150px;
+}
+.div-img > img{
+    grid-area: 1/1/1/1;
+    width: 200px;
+    height: 200px;
+    border: 1px solid transparent;
+    border-radius: 5px;
 }
 .add-sign{
     padding-bottom: 25px;
@@ -52,12 +60,13 @@ h2{
 }
         /* manage profiles */
 .dim{
-    opacity: .6;
+    opacity: .7;
 }
 .dim:hover{
     opacity: 1;
 }
 .edit-img{
+    grid-area: 1/1/1/1;
     font-size: 4rem;
     opacity: 1;
     transition: all .25s;
@@ -188,12 +197,11 @@ Add Profile Popup
     display: flex;
     align-items: center;
 }
-.new-img{
+.profile-input > img{
+    width: 90px;
     height: 90px;
-    width: 110px;
-    border-radius: 5px;
-    background-color: pink;
     margin-right: 20px;
+    border-radius: 5px;
 }
 input{
     height: 50px;
